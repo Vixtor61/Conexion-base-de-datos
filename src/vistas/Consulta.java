@@ -73,7 +73,7 @@ public class Consulta extends JFrame {
      marca = new JComboBox();
      stock = new JTextField();
      si = new JRadioButton("si",true);
-     si = new JRadioButton("no");
+     no = new JRadioButton("no");
      resultados = new JTable();
      buscar =new JButton("Buscar");
      insertar = new JButton("insertar");
@@ -95,6 +95,7 @@ public class Consulta extends JFrame {
      stock.setBounds(140,100,ANCHOC,ALTOC);
      si.setBounds(140,140,50,ALTOC);
      no.setBounds(210,140,50,ALTOC);
+     
      
      buscar.setBounds(300,10,ANCHOC,ALTOC);
      insertar.setBounds(10,210,ANCHOC,ALTOC);

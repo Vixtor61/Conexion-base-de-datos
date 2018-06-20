@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * @author vic_1
  */
 public class FiltroDao implements metodos<Filtro> {
-    private Conexion con = Conexion.conectar();
+    private static final Conexion con = Conexion.conectar();
     private static final String SQL_INSERT = "INSERT INTO filtros_aceite (codFiltro,marca,stock,existencia) VALUES (?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE filtros_aceite SET marca = ?, stock = ?, existencia = ? WHERE codFiltro=?";
     private static final String SQL_DELETE = "DELETE FROM filtros_aceite WHERE codFiltro =?";
@@ -78,7 +78,7 @@ try{
     
     ps.setString(1, c.getMarca());
     ps.setInt(2, c.getStock());
-    ps.setBoolean(3, true);
+    ps.setBoolean(3, c.isExistencia());
     ps.setString(4, c.getCodigo());
     if(ps.executeUpdate() >0){
         return true;
@@ -90,6 +90,26 @@ try{
     con.cerrarConexion();
 }
 return false;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     
 }
@@ -126,10 +146,10 @@ return f;
     
 try{
     
-    s = con.getCnx().prepareStatement(SQL_READ);
+    s = con.getCnx().prepareStatement(SQL_READALL);
     
     
- rs = s.executeQuery(SQL_READALL);
+   rs = s.executeQuery(SQL_READALL);
  while(rs.next()){
     all.add(new Filtro(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getBoolean(5)));
  }
